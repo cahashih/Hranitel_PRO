@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1ca7da00ca0f4236a883f6299be87e88" Name="Diagram1" ZoomLevel="66">
+        <EntityTypeShape EntityType="HranitelPRO_WSRModel.Appointment" Width="1.5" PointX="3.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_WSRModel.Departament" Width="1.5" PointX="1.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_WSRModel.Division" Width="1.5" PointX="1.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_WSRModel.Passport" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_WSRModel.Staff" Width="1.5" PointX="1.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HranitelPRO_WSRModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="HranitelPRO_WSRModel.FK_Appointment_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPRO_WSRModel.FK_Staff_Departament" ManuallyRouted="false" />
+        <AssociationConnector Association="HranitelPRO_WSRModel.FK_Staff_Division" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HranitelPRO_WSRModel.User" Width="4.375" PointX="8.375" PointY="1.625" />
+        <AssociationConnector Association="HranitelPRO_WSRModel.FK_User_Passport" />
+        <EntityTypeShape EntityType="HranitelPRO_WSRModel.Applications" Width="1.5" PointX="6" PointY="9.5" />
+        <EntityTypeShape EntityType="HranitelPRO_WSRModel.StatusCode" Width="1.5" PointX="3.75" PointY="12" />
+        <AssociationConnector Association="HranitelPRO_WSRModel.FK_Applications_Appointment" />
+        <AssociationConnector Association="HranitelPRO_WSRModel.FK_Applications_StatusCode" />
+        <EntityTypeShape EntityType="HranitelPRO_WSRModel.UsersGroupVisit" Width="1.5" PointX="13.5" PointY="5.875" />
+        <AssociationConnector Association="HranitelPRO_WSRModel.FK_UsersGroupVisit_Applications" />
+        <AssociationConnector Association="HranitelPRO_WSRModel.UserGroupe" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

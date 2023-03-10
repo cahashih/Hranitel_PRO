@@ -1,0 +1,37 @@
+﻿<Window x:Class="Hranitel_PRO_WSR.SessionEditPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hranitel_PRO_WSR" 
+        mc:Ignorable="d"
+        Title="SessionEditPage" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.ColumnSpan="3" AutoGenerateColumns="False" x:Name="DGridUsers" IsReadOnly="True">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="ID клиента" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Patronomyc}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Birthday}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Серия паспорта" Binding="{Binding Passport.Serial}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер пасспорта" Binding="{Binding Passport.Number}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="1" Click="SessionAcces_Click"> Разрешение на доступ</Button>
+        <TextBox x:Name="zvuk" Grid.Row="1" Grid.Column="1"></TextBox>
+        <Button Grid.Row="1" Grid.Column="2" ></Button>
+
+    </Grid>
+</Window>

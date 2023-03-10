@@ -1,0 +1,75 @@
+﻿<Page x:Class="Hranitel_PRO_WSR.ApplicationPagge"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      
+      xmlns:local="clr-namespace:Hranitel_PRO_WSR"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ApplicationPagge">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" >
+            <Button Click="FilterSet_Click" HorizontalAlignment="Left" >Фильтр установить</Button>
+            <ComboBox x:Name="TypeSearch" >
+                <ComboBoxItem>По ФИО (Через пробел)</ComboBoxItem>
+                <ComboBoxItem>По серии и номеру поспорта (Через пробел)</ComboBoxItem>
+            </ComboBox>
+            <TextBox x:Name="SearchBox" Width="150" ></TextBox>
+            <Button x:Name="SearchButton" Click="SearchButton_Click">Поиск</Button>
+            <Button Click="Refresh_Click" FontSize="12" HorizontalAlignment="Right" VerticalAlignment="Center" >🔃</Button>
+        </StackPanel>
+        
+        
+        <DataGrid Grid.Row="1" AutoGenerateColumns="false" x:Name="DGridApplication" IsReadOnly="True">
+            <DataGrid.ColumnHeaderStyle>
+                <Style/>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="ID" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Статус заявки" Binding="{Binding StatusCode1.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата регистрации заявки" Binding="{Binding DateRegistration}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата посещения" Binding="{Binding Appointment.Date}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Код сотрудника" Binding="{Binding Appointment.StaffCode}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Подразделение" Binding="{Binding Appointment.Staff.Division.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Групповое посещение" Binding="{Binding GroupVisit}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Вход" Binding="{Binding StartSession}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Выход" Binding="{Binding EndSession}"></DataGridTextColumn>
+                <DataGridTemplateColumn Width=" auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Просмотр информации об участниках" Click="BtnView_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width=" auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Взаимодействие" Click="BtnSession_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Grid.Row="2" AutoGenerateColumns="False" x:Name="DGridUsers" IsReadOnly="True">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="ID клиента" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Patronomyc}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Birthday}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Серия паспорта" Binding="{Binding Passport.Serial}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер пасспорта" Binding="{Binding Passport.Number}"></DataGridTextColumn>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
