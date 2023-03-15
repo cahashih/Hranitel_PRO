@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Авторизация</title>
+
+    <style>
+
+        .loginForm {
+            width: 400px;
+            height: 400px;
+            right: 0;
+            background-color: #ffffff;
+            padding: 30px 30px 30px 30px;
+            border-style: outset;
+            border-color: #008978;
+            border-width: 5px;
+            position: absolute;
+            border-radius: 20px;
+            top: 50%;
+            left: 50%;
+            margin: -200px 0 0 -200px; /* отступы равны половинным размера формы */
+            z-index: 9999; /* чтобы форма была поверх всех элементов страницы */
+        }
+
+        .backgroundLog {
+            background-color: rgba(0,0,0,0.50);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+        }
+
+
+        .text10 {
+            text-align: center;
+            font-size: 30px;
+            width: 280px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="backgroundLog">
+
+    </div>
+    <div id="loginForm" class="loginForm" style="">
+        <div class="text10">Вход на сайт</div>
+        <p>
+            <label>Введите логин</label><br />
+            <input type="text" id="login" />
+        </p>
+        <p>
+            <label>Введите пароль</label><br />
+            <input type="password" id="password" />
+        </p>
+        <input type="submit" id="submitLogin" value="Логин" />
+    </div>
+
+    <script>
+    document.getElementById("submitLogin").addEventListener("click", async e => {
+        e.preventDefault();
+        
+        const response = await fetch("/api/Applications", {
+            method: "POST",
+            headers: { "Accept": "application/json", "Content-Type": "application/json" },
+            body: JSON.stringify({
+                login: document.getElementById("login").value,
+                password: document.getElementById("password").value
+            })
+        });
+        // если запрос прошел нормально
+        if (response.ok === true) {
+            // получаем данные
+            window.location.href = "/Home/Index";
+        }
+        else  // если произошла ошибка, получаем код статуса
+            console.log("Status: ", response.status);
+    });
+
+    
+    function callRedirect() {
+        
+    }
+
+    </script>
+</body>
+</html>

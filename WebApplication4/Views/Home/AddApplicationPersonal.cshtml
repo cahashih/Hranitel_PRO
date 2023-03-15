@@ -1,0 +1,258 @@
+﻿@model WebApplication4.Controllers.AddApplications
+
+@{
+    ViewBag.Title = "AddApplicationPersonal";
+}
+
+<h2>AddApplicationPersonal</h2>
+
+@using (Html.BeginForm()) 
+{
+    string username = Request.QueryString["username"];
+    @Html.AntiForgeryToken()
+<head>
+    
+    
+    <style type="text/css">
+        input{
+            border-radius: 9px;
+            border: 1px solid black;
+        }
+
+        .title_bar {
+            height: 20px;
+            width: 100%;
+            background-color: #ff9100;
+            background: #ff9100;
+            border-radius: 20px;
+        }
+        span {
+           display: flex;
+           justify-content: center;
+            
+            
+        }
+
+        header {
+            background: white;
+            margin-bottom: 50px;
+            font-size: 24px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;s
+        }
+
+            *, header:not() {
+                font-size: 16px;
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            }
+
+        .col-md-10 {
+            display: flex;
+        }
+        .header__title {
+            padding: 0px 0px 0px 20px;
+            margin-top: -50px;
+        }
+
+        .choise-info {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        img {
+            border-radius: 20px;
+        }
+
+        button {
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        .container__top {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .container__bottom {
+            
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info__member {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info__member-bottom {
+            display: flex;
+            justify-content: space-around;
+            background: #b5b5b5;
+        }
+
+        .maininfo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dopinfo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info__image {
+            display: flex;
+            flex-direction: column;
+        }
+        .load__side {
+            padding-top: 20px;
+            width: 100%;
+            background: #b5b5b5;
+        }
+        .info__skip {
+            flex-direction:column;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            width: 500px;
+            background: #b5b5b5;
+        }
+        .docs__bottom {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<div class="form-horizontal">
+    <h4>AddApplications</h4>
+    <hr />
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="container__top">
+        <div >
+            <div class="title_bar">
+                <span>Информация для пропуска</span>
+            </div>
+            <div class="info__skip">
+
+
+                <div class="valid-period">
+                    <label>Срок действия заявки</label>
+                    <div class="form-group">
+
+                        <div class="col-md-10">
+                            <label>С*</label>
+                            @Html.EditorFor(model => model.DateAppointment, new { htmlAttributes = new { @class = "first__date", @required = "required", @type = "date" } })
+                            <label>по</label>
+                            <div class="second__date"><input required="required" type="date" name="dateval"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="goal">
+                    <label>Цель посещения</label>
+                    @Html.EditorFor(model => model.targetApplication, new { htmlAttributes = new {  required = "required" } })
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="title_bar">
+    <span>Принимающая сторона</span>
+                </div>
+    <div class="info__skip">
+        <div class="division">
+            <label>Подразделение*:</label>
+            @Html.DropDownList("staffcode", null, "", new { required = "required" })
+
+        </div>
+        <div class="employee">
+            <label>ФИО*:</label>
+            @Html.EditorFor(model => model.LFPStaff, new { htmlAttributes = new { @required = "required" } })
+        </div>
+    </div>
+</div>
+        </div>
+    <div class="container__bottom">
+        <div class="info__member">
+            <div class="title_bar">
+                <span>Информация о посетителе</span>
+            </div>
+            <div class="info__member-bottom">
+                <div class="maininfo">
+                    <label>Фамилия*:</label>
+                    @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @type = "text", @required = "required" } })
+                    <label>Имя*:</label>
+                    @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @type = "text", @required = "required" } })
+                    <label>Отчество*:</label>
+                    @Html.EditorFor(model => model.Patronomyc, new { htmlAttributes = new { @type = "text", @required = "required" } })
+
+                    <label>Телефон:</label>
+
+                    @Html.TextBoxFor(model => model.Phone, new { htmlAttributes = new { @class = "telephone", @required = "required" } })
+                    
+                    @section scripts{
+                        @Scripts.Render("~/js/jquery.maskedinput.js")
+                        
+                        s
+                        <script>
+                            $(function () {
+
+                                $("#Phone").mask("+7(999) 999-99-99");
+                            });
+
+                        </script>
+                    }
+                    <label>E-mail:</label>
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new {  @required = "required" } })
+                </div>
+                <div class="dopinfo">
+                    <label>Организация:</label>
+                    @Html.EditorFor(model => model.Organizacia, new { htmlAttributes = new {  @required = "required" } })
+                    <label>Примечание:</label>
+                    @Html.EditorFor(model => model.Primechanie, new { htmlAttributes = new {  @required = "required" } })
+                    <label>Дата рождения:</label>
+                    @Html.EditorFor(model => model.DateAppointment, new { htmlAttributes = new { @class = "first__date", @required = "required", @type = "date" } })
+                    <label>Серия:</label>
+                    @Html.EditorFor(model => model.SerialPass, new { htmlAttributes = new {  @required = "required", @max = "9999", @maxlength = "4", @minlength = "4" } })
+                    
+                    <label>Номер:</label>
+                    @Html.EditorFor(model => model.SerialPass, new { htmlAttributes = new {  @required = "required", @max = "999999", @maxlength = "6", @minlength = "6" } })
+                </div>
+                <div class="info__image">
+                    <img src="/img/User.jpg" width="150" height="150" alt="#">
+                    <input type="file" name="file" class="file">
+                </div>
+            </div>
+        </div>
+        <div class="docs">
+            <span>Прикрепляемые документы</span>
+            <div class="docs__bottom">
+                <input type="file" name="file" placeholder="Прикрепить файл" id="file">
+                <div class="docs__bottom-flex">
+                    <button type="reset">Очистить форму</button>
+                    <button type="submit"  value="Send" >Оформить заявку</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
